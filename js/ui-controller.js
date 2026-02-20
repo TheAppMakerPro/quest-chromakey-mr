@@ -268,7 +268,7 @@ const UIController = (() => {
     elements.loadBtn.disabled = true;
 
     try {
-      await VideoPlayer.load(url);
+      await VideoPlayer.load(url, function(msg) { setStatus(msg, ''); });
       setStatus('Video loaded!', 'success');
       elements.previewMsg.style.display = 'none';
       elements.videoControls.style.display = 'flex';
