@@ -113,8 +113,7 @@
   </div>
 
   <script>
-    // The bookmarklet code — update the URL to your actual GitHub Pages URL
-    const APP_URL = window.location.href.replace(/setup\.html.*$/, '');
+    const APP_URL = 'https://theappmakerpro.github.io/quest-chromakey-mr/';
     const bookmarkletCode = `javascript:void(function(){var v=document.querySelectorAll('video');if(!v.length){alert('No video found. Play a video first!');return}var s=v[0].src||v[0].currentSrc||(v[0].querySelector('source')||{}).src;if(!s||s.startsWith('blob:')){s=window.location.href}window.open('${APP_URL}?video='+encodeURIComponent(s),'_blank')})()`;
 
     document.getElementById('bookmarklet-code').textContent = bookmarkletCode;
