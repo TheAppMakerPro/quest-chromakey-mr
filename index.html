@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MR ChromaKey</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#00d4aa">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Main 2D UI -->
+  <div id="main-ui">
+    <div class="header">
+      <h1>MR ChromaKey</h1>
+      <p>Green / Blue / Black screen to passthrough</p>
+    </div>
+
+    <!-- Video URL Input -->
+    <div class="section">
+      <div class="section-title">Video Source</div>
+      <div class="url-row">
+        <input type="url" id="video-url" class="url-input" placeholder="Paste video URL (.mp4, .webm)">
+        <button id="load-btn" class="btn btn-accent">Load</button>
+      </div>
+      <div class="status-bar" id="status-bar"></div>
+    </div>
+
+    <!-- Preview -->
+    <div class="section">
+      <div class="section-title">Preview</div>
+      <div class="preview-container">
+        <canvas id="preview-canvas"></canvas>
+        <div class="preview-msg" id="preview-msg">Load a video to preview</div>
+      </div>
+      <div class="video-controls" id="video-controls" style="display:none">
+        <button class="btn" id="play-pause-btn">Play</button>
+        <button class="btn" id="restart-btn">Restart</button>
+      </div>
+    </div>
+
+    <!-- Chroma Key Settings -->
+    <div class="section">
+      <div class="section-title">Key Color</div>
+      <div class="color-buttons">
+        <button class="color-btn green active" data-color="green">Green</button>
+        <button class="color-btn blue" data-color="blue">Blue</button>
+        <button class="color-btn black-key" data-color="black">Black</button>
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-label">
+          <span>Tolerance</span>
+          <span class="value" id="tolerance-value">0.35</span>
+        </div>
+        <input type="range" id="tolerance-slider" min="0" max="1" step="0.01" value="0.35">
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-label">
+          <span>Edge Smoothing</span>
+          <span class="value" id="smoothing-value">0.10</span>
+        </div>
+        <input type="range" id="smoothing-slider" min="0" max="0.5" step="0.01" value="0.10">
+      </div>
+    </div>
+
+    <!-- MR Settings -->
+    <div class="section">
+      <div class="section-title">MR Settings</div>
+      <div class="slider-group">
+        <div class="slider-label">
+          <span>Screen Distance</span>
+          <span class="value" id="distance-value">2.0m</span>
+        </div>
+        <input type="range" id="distance-slider" min="0.5" max="5" step="0.1" value="2.0">
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-label">
+          <span>Screen Scale</span>
+          <span class="value" id="scale-value">1.0x</span>
+        </div>
+        <input type="range" id="scale-slider" min="0.3" max="3" step="0.1" value="1.0">
+      </div>
+    </div>
+
+    <!-- Enter MR Button -->
+    <div class="mr-button-container">
+      <button id="enter-mr-btn" class="btn btn-accent" disabled>Enter MR Mode</button>
+    </div>
+
+    <div class="setup-link">
+      <a href="setup.html">Install Browser Bookmarklet &rarr;</a>
+    </div>
+
+    <div class="footer">
+      MR ChromaKey &middot; Works on Meta Quest 3
+    </div>
+  </div>
+
+  <!-- XR Overlay (shown during MR mode) -->
+  <div id="xr-overlay">
+    <div class="overlay-row">
+      <button class="overlay-btn" id="xr-play-pause">Pause</button>
+      <button class="overlay-btn active-color" id="xr-color-toggle">Green</button>
+    </div>
+    <div class="slider-group">
+      <div class="slider-label">
+        <span>Tolerance</span>
+        <span class="value" id="xr-tolerance-value">0.35</span>
+      </div>
+      <input type="range" id="xr-tolerance-slider" min="0" max="1" step="0.01" value="0.35">
+    </div>
+    <div class="overlay-row">
+      <button class="overlay-btn exit" id="xr-exit-btn">Exit MR</button>
+    </div>
+  </div>
+
+  <!-- Hidden canvas for WebXR rendering -->
+  <canvas id="xr-canvas" style="display:none"></canvas>
+
+  <script src="js/chromakey.js"></script>
+  <script src="js/video-player.js"></script>
+  <script src="js/ui-controller.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "MR ChromaKey",
+  "short_name": "ChromaKey",
+  "description": "Mixed Reality chroma key for Quest 3 — make green/blue/black screen videos transparent with passthrough",
+  "start_url": "/quest-chromakey-mr/",
+  "scope": "/quest-chromakey-mr/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#1a1a2e",
+  "theme_color": "#00d4aa",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
