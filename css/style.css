@@ -309,25 +309,36 @@ input[type="range"]::-webkit-slider-thumb {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(26, 26, 46, 0.9);
+  background: rgba(26, 26, 46, 0.92);
   border-radius: 16px;
   padding: 14px 20px;
   z-index: 1000;
   backdrop-filter: blur(10px);
-  min-width: 300px;
+  min-width: 320px;
+  max-width: 380px;
 }
 
 #xr-overlay.visible {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   align-items: stretch;
+}
+
+.overlay-section-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: 4px;
 }
 
 .overlay-row {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   justify-content: center;
+  align-items: center;
 }
 
 .overlay-btn {
@@ -339,6 +350,38 @@ input[type="range"]::-webkit-slider-thumb {
   cursor: pointer;
   color: #fff;
   background: var(--surface-hover);
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.overlay-btn:active {
+  transform: scale(0.93);
+  background: #2a4070;
+}
+
+.overlay-btn.arrow {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.overlay-btn.size-btn {
+  flex: 1;
+  padding: 10px 8px;
+  font-size: 0.8rem;
+}
+
+.overlay-size-label {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.9rem;
+  min-width: 42px;
+  text-align: center;
 }
 
 .overlay-btn.active-color {
@@ -348,6 +391,9 @@ input[type="range"]::-webkit-slider-thumb {
 
 .overlay-btn.exit {
   background: var(--danger);
+  padding: 12px;
+  font-size: 0.95rem;
+  width: 100%;
 }
 
 /* ---- Footer ---- */

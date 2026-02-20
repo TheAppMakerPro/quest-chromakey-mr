@@ -179,6 +179,8 @@ const App = (() => {
       // Build model matrix: position the quad in space
       const dist = UIController.getScreenDistance();
       const scale = UIController.getScreenScale();
+      const offX = UIController.getScreenOffsetX();
+      const offY = UIController.getScreenOffsetY();
 
       // Video aspect ratio
       let aspect = 16 / 9;
@@ -189,7 +191,7 @@ const App = (() => {
       const halfWidth = scale * aspect * 0.5;
       const halfHeight = scale * 0.5;
 
-      const translateMat = mat4Translate(0, 1.5, -dist);
+      const translateMat = mat4Translate(offX, offY, -dist);
       const scaleMat = mat4Scale(halfWidth, halfHeight, 1);
       const modelMatrix = mat4Multiply(translateMat, scaleMat);
 

@@ -103,10 +103,35 @@
 
   <!-- XR Overlay (shown during MR mode) -->
   <div id="xr-overlay">
+    <!-- Move controls -->
+    <div class="overlay-section-label">Move Screen</div>
+    <div class="overlay-row">
+      <button class="overlay-btn arrow" data-move="left">&#9664;</button>
+      <button class="overlay-btn arrow" data-move="up">&#9650;</button>
+      <button class="overlay-btn arrow" data-move="down">&#9660;</button>
+      <button class="overlay-btn arrow" data-move="right">&#9654;</button>
+    </div>
+    <div class="overlay-row">
+      <button class="overlay-btn" data-move="closer">Closer</button>
+      <button class="overlay-btn" data-move="farther">Farther</button>
+    </div>
+
+    <!-- Resize controls -->
+    <div class="overlay-section-label">Resize</div>
+    <div class="overlay-row">
+      <button class="overlay-btn size-btn" id="xr-smaller">&#8722; Smaller</button>
+      <span class="overlay-size-label" id="xr-size-label">1.0x</span>
+      <button class="overlay-btn size-btn" id="xr-bigger">&#43; Bigger</button>
+    </div>
+
+    <!-- Playback & Color -->
+    <div class="overlay-section-label">Playback</div>
     <div class="overlay-row">
       <button class="overlay-btn" id="xr-play-pause">Pause</button>
       <button class="overlay-btn active-color" id="xr-color-toggle">Green</button>
     </div>
+
+    <!-- Tolerance -->
     <div class="slider-group">
       <div class="slider-label">
         <span>Tolerance</span>
@@ -114,8 +139,10 @@
       </div>
       <input type="range" id="xr-tolerance-slider" min="0" max="1" step="0.01" value="0.35">
     </div>
+
+    <!-- Quit -->
     <div class="overlay-row">
-      <button class="overlay-btn exit" id="xr-exit-btn">Exit MR</button>
+      <button class="overlay-btn exit" id="xr-exit-btn">Quit MR</button>
     </div>
   </div>
 
