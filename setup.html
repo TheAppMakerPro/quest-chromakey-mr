@@ -101,9 +101,9 @@
 
     <div class="step">
       <h3>Use It!</h3>
-      <p>Now browse to any website with a green screen video. Make sure the video is playing, then tap your <strong>"MR ChromaKey"</strong> bookmark. It will detect the video and open the MR ChromaKey app automatically.</p>
+      <p>Browse to any website with green screen videos. <strong>Before</strong> playing the video, tap your <strong>"MR ChromaKey"</strong> bookmark. A floating green button will appear on the page. Now play and browse videos normally. When you find one you want, tap the floating button — it grabs the video and opens the app.</p>
       <div class="tip">
-        Works best with sites that serve direct .mp4 or .webm files (Pexels, Pixabay, stock footage sites). YouTube uses DRM streaming, so the bookmarklet will pass the page URL instead — you may need to paste a direct video link manually.
+        The floating button stays on screen even while videos play. Tap it anytime to send the current video to MR ChromaKey. Tap the X to dismiss it. Works best with sites serving direct .mp4/.webm files (Pexels, Pixabay, stock footage sites).
       </div>
     </div>
   </div>
@@ -114,7 +114,7 @@
 
   <script>
     const APP_URL = 'https://theappmakerpro.github.io/quest-chromakey-mr/';
-    const bookmarkletCode = `javascript:void(function(){var v=document.querySelectorAll('video');if(!v.length){alert('No video found. Play a video first!');return}var s=v[0].src||v[0].currentSrc||(v[0].querySelector('source')||{}).src;if(!s||s.startsWith('blob:')){s=window.location.href}window.open('${APP_URL}?video='+encodeURIComponent(s),'_blank')})()`;
+    const bookmarkletCode = `javascript:void(function(){if(document.getElementById('mrck-float'))return;var d=document.createElement('div');d.id='mrck-float';d.style.cssText='position:fixed;bottom:20px;right:20px;z-index:2147483647;display:flex;gap:6px;font-family:sans-serif';var b=document.createElement('button');b.textContent='MR ChromaKey';b.style.cssText='background:#00d4aa;color:#111;border:none;padding:14px 22px;border-radius:30px;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,0.5)';b.onclick=function(){var v=document.querySelectorAll('video');if(!v.length){alert('No video found on this page yet.');return}var s=v[0].src||v[0].currentSrc||(v[0].querySelector('source')||{}).src;if(!s||s.startsWith('blob:'))s=window.location.href;window.open('${APP_URL}?video='+encodeURIComponent(s),'_blank')};var x=document.createElement('button');x.textContent='X';x.style.cssText='background:#333;color:#fff;border:none;width:36px;height:36px;border-radius:50%;font-size:14px;font-weight:700;cursor:pointer;align-self:center';x.onclick=function(){d.remove()};d.appendChild(b);d.appendChild(x);document.body.appendChild(d)})()`;
 
     document.getElementById('bookmarklet-code').textContent = bookmarkletCode;
 
